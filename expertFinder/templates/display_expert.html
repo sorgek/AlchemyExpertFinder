@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}
+{{expert.lastName}}
+{% endblock %}
+
+{% block body %}
+    <h1>View Expert</h1>
+
+    <ul>
+       <div class="card mb-2">
+           <p class="card-text">{{ expert.firstName }}</p>
+           <p class="card-text">{{ expert.lastName }}</p>
+           <p class="card-text">{{ expert.organization }}</p>
+           <p class="card-text">{{ expert.techSkills }}</p>
+           <p class="card-text">{{ expert.courseWork }}</p>
+           <p class="card-text">{{ expert.gitRepo }}</p>
+           <p class="card-text">{{ expert.linkedIn }}</p>
+           <p class="card-text">{{ expert.twitter }}</p>
+           <p class="card-text">{{ expert.email }}</p>
+           <form action="{% url 'expertFinder:edit' expert.id %}" method="POST">
+               {% csrf_token %}
+               <input type="submit" value="Edit" class="btn btn-primary">
+           </form>
+       </div>
+    </ul>
+
+{% endblock %}
