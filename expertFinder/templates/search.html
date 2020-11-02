@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}
+Find Expert
+{% endblock %}
+
+{% block body %}
+    <h1>Find Expert</h1>
+
+    <ul>
+        <form action="{% url 'expertFinder:search_results' %}" method="POST" class="post-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Search</button>
+        </form>
+    </ul>
+
+{% endblock %}
