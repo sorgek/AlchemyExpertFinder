@@ -9,15 +9,25 @@
 
     <ul>
        <div class="card mb-2">
-           <p class="card-text">{{ expert.firstName }}</p>
-           <p class="card-text">{{ expert.lastName }}</p>
-           <p class="card-text">{{ expert.organization }}</p>
-           <p class="card-text">{{ expert.techSkills }}</p>
-           <p class="card-text">{{ expert.courseWork }}</p>
-           <p class="card-text">{{ expert.gitRepo }}</p>
-           <p class="card-text">{{ expert.linkedIn }}</p>
-           <p class="card-text">{{ expert.twitter }}</p>
-           <p class="card-text">{{ expert.email }}</p>
+           <dl>
+               <p class="card-text">{{ expert.firstName }}</p>
+               <p class="card-text">{{ expert.lastName }}</p>
+               <dt>Work</dt>
+               <dl class="card-text">{{ expert.organization }}</dl>
+               <dt>Skills</dt>
+               <dl class="card-text">{{ expert.techSkills }}</dl>
+               <dt>Coursework</dt>
+               <dl class="card-text">{{ expert.courseWork }}</dl>
+               <dt>Git</dt>
+               <dl class="card-text">{{ expert.gitRepo }}</dl>
+               <dt>LinkedIn</dt>
+               <dl class="card-text">{{ expert.linkedIn }}</dl>
+               <dt>Twitter</dt>
+               <dl class="card-text">{{ expert.twitter }}</dl>
+               <dt>eMail</dt>
+               <dl class="card-text">{{ expert.email }}</dl>
+           </dl>
+           <br>
            <form action="{% url 'expertFinder:edit' expert.id %}" method="POST">
                {% csrf_token %}
                <input type="submit" value="Edit" class="btn btn-primary">
