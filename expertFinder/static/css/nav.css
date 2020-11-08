@@ -2,6 +2,10 @@
     background-color:#d8741c ;
 }
 
-#mainBody {
+#logoImage {
+    width: 150px;
+}
 
+.underlined-nav {
+    text-decoration: underline;
 }
