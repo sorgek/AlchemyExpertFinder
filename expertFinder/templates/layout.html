@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        <link href="{% static 'styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="navbar navbar-expand-lg navbar-dark"  style="background-color: #d8741c;">
+              <a class="navbar-brand" href="#">ExpertFinder</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -24,23 +24,8 @@
                     </ul>
               </div>
         </nav>
-        <div class="row" id="mainNav">
-            <div class="sidebar col-lg-2 col-md-3">
-                <h2>Nav Placeholder</h2>
-                <div>
-                    <a href="{% url 'expertFinder:search' %}">Search</a>
 
-                </div>
-                <div>
-                    <a href="{% url 'expertFinder:add' %}">Add</a>
-                </div>
-                <div>
-                    Something
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
+        <div class="row" id="mainBody">
             <div class="main col-lg-10 col-md-9">
                 {% block body %}
                 {% endblock %}
