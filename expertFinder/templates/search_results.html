@@ -1,4 +1,4 @@
-{% extends "navbar.html" %}
+{% extends "layout.html" %}
 {% load static %}
 {% block title %}
 Search Results
@@ -7,20 +7,37 @@ Search Results
 {% block body %}
     <h1>Find Expert</h1>
 
+    <style>
+        .bold-text
+        {
+        font-weight: bold;
+        text-decoration:underline;
+        }
+    </style>
+
     <ul>
         {% for expert in query %}
         <form  action="{% url 'expertFinder:display_expert' expert.id %}" method="POST" class="post-form">
             {% csrf_token %}
 
             <div class="card mb-2">
+               <p class="bold-text">First Name</p>
                <p class="card-text">{{ expert.firstName }}</p>
+               <p class="bold-text">Last Name</p>
                <p class="card-text">{{ expert.lastName }}</p>
+                <p class="bold-text">Organization</p>
                <p class="card-text">{{ expert.organization }}</p>
+                <p class="bold-text">Tech Skills</p>
                <p class="card-text">{{ expert.techSkills }}</p>
+                <p class="bold-text">Course Work</p>
                <p class="card-text">{{ expert.courseWork }}</p>
+                <p class="bold-text">Link to GitRepo</p>
                <p class="card-text">{{ expert.gitRepo }}</p>
+                <p class="bold-text">Link to LinkedIn Profile</p>
                <p class="card-text">{{ expert.linkedIn }}</p>
+                <p class="bold-text">Link to Twitter</p>
                <p class="card-text">{{ expert.twitter }}</p>
+                <p class="bold-text">Email</p>
                <p class="card-text">{{ expert.email }}</p>
                 <br>
             <button  type="submit" class="save btn btn-default">Go to Expert</button>
