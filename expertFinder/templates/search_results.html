@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "navbar.html" %}
 {% load static %}
 {% block title %}
 Search Results
@@ -19,7 +19,6 @@ Search Results
         {% for expert in query %}
         <form  action="{% url 'expertFinder:display_expert' expert.id %}" method="POST" class="post-form">
             {% csrf_token %}
-
             <div class="card mb-2">
                <p class="bold-text">First Name</p>
                <p class="card-text">{{ expert.firstName }}</p>
