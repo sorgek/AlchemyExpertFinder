@@ -1,0 +1,11 @@
+#mainNav {
+    background-color:#d8741c ;
+}
+
+#logoImage {
+    width: 150px;
+}
+
+.underlined-nav {
+    text-decoration: underline;
+}
