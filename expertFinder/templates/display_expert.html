@@ -30,10 +30,7 @@
                <dl class="card-text">{{ expert.email }}</dl>
            </dl>
            <br>
-           <form action="{% url 'expertFinder:edit' expert.id %}" method="POST">
-               {% csrf_token %}
-               <input type="submit" value="Edit" class="btn btn-primary">
-           </form>
+           <a href="{% url 'expertFinder:edit' expert.id %}">Edit</a>
        </div>
     </ul>
 

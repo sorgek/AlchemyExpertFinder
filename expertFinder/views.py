@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Expert
 from .forms import search_drop_down, EditExpert
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 
 def edit_profile(request):
@@ -53,22 +54,24 @@ def search_results(request):
     print(results)
     return render(request, "search_results.html", results)
 
-
-
 def edit(request, pk):
-    results = {}
-    instance = Expert.objects.get(pk=pk)
-    form = EditExpert(request.POST or None, instance=instance)
-    if form.is_valid():
-        form.save()
-        expert = Expert.objects.get(pk=pk)
-        print(expert)
-        results = {
-            'expert': expert
+    try:
+        data_to_edit = get_object_or_404(Expert, id= pk)
+    except Exception:
+        raise Http404('No entry')
+    if request.method == 'POST':
+        form = EditExpert(request.POST, instance=data_to_edit)
+
+        if form.is_valid():
+            form.save()
+            return display_expert(request, pk)
+    else:
+        form = EditExpert(instance=data_to_edit)
+        context = {
+            'form': form
         }
-        return render(request, "display_expert.html", results)
-    results['form'] = form
-    return render(request, "editexpert.html", results)
+        return render(request, 'editexpert.html', context)
+
 
 class AddExpert(CreateView):
     model = Expert
@@ -77,4 +80,11 @@ class AddExpert(CreateView):
     template_name = 'expertFinder/expert_form.html'
 
 
+    success_url = reverse_lazy('expertFinder:search')
+
+class EditExport(UpdateView):
+    model = Expert
+    fields = ['firstName', 'lastName', 'organization', 'techSkills',
+              'courseWork', 'gitRepo', 'linkedIn', 'twitter', 'email']
+    template_name = 'expertFinder/edit_expert.html'
     success_url = reverse_lazy('expertFinder:search')
