@@ -7,40 +7,37 @@ Search Results
 {% block body %}
     <h1>Find Expert</h1>
 
-    <style>
-        .bold-text
-        {
-        font-weight: bold;
-        text-decoration:underline;
-        }
-    </style>
+
 
     <ul>
         {% for expert in query %}
         <form  action="{% url 'expertFinder:display_expert' expert.id %}" method="POST" class="post-form">
             {% csrf_token %}
 
-            <div class="card mb-2">
-               <p class="bold-text">First Name</p>
-               <p class="card-text">{{ expert.firstName }}</p>
-               <p class="bold-text">Last Name</p>
-               <p class="card-text">{{ expert.lastName }}</p>
-                <p class="bold-text">Organization</p>
-               <p class="card-text">{{ expert.organization }}</p>
-                <p class="bold-text">Tech Skills</p>
-               <p class="card-text">{{ expert.techSkills }}</p>
-                <p class="bold-text">Course Work</p>
-               <p class="card-text">{{ expert.courseWork }}</p>
-                <p class="bold-text">Link to GitRepo</p>
-               <p class="card-text">{{ expert.gitRepo }}</p>
-                <p class="bold-text">Link to LinkedIn Profile</p>
-               <p class="card-text">{{ expert.linkedIn }}</p>
-                <p class="bold-text">Link to Twitter</p>
-               <p class="card-text">{{ expert.twitter }}</p>
-                <p class="bold-text">Email</p>
-               <p class="card-text">{{ expert.email }}</p>
-                <br>
-            <button  type="submit" class="save btn btn-default">Go to Expert</button>
+            <div class="card" style="width: 80%;">
+                <div class="card-body">
+                   <h5 class="card-title">Name</h5>
+                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.firstName}} {{ expert.lastName }}</h6>
+                    <h5 class="card-title">Organization</h5>
+                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
+                    <h5 class="card-title"">Tech Skills</p>
+                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.techSkills }}</h6>
+                    <h5 class="card-title">Course Work</h5>
+                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.courseWork }}</h6>
+                        <div class="card" style="width: 80%">
+                            <h5 class="card-title">Work and Contact</h5>
+                            <p class="card-text">
+                                <ul>
+                                <li class="card-text"><a href= {{ expert.gitRepo }} target="_blank">{{ expert.gitRepo }}</a></li>
+                                <li class="card-text"><a href= {{ expert.linkedIn }} target="_blank">{{ expert.linkedIn }}</a></li>
+                                <li class="card-text"><a href= {{ expert.twitter }} target="_blank">{{ expert.twitter }}</a></li>
+                                <li class="card-text"><a href= "mailto:"{{ expert.email }}>{{ expert.email }}</a></li>
+                                </ul>
+                            </p>
+                        </div>
+                    <br>
+                    <button  type="submit" class="save btn btn-default">Go to Expert</button>
+                </div>
             </div>
             </form>
 

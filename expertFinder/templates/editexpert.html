@@ -8,15 +8,16 @@
     <h1>Edit Expert</h1>
 
     <ul>
-       <div class="container">
-            <form method="POST">
-              <fieldset>
-                <legend>Form</legend>
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </fieldset>
+       <div class="card">
+           <div class="card-body" style="width: 80%">
+               <form method="POST">
+                  <fieldset>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </fieldset>
             </form>
+           </div>
         </div>
     </ul>
 
