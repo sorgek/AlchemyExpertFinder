@@ -8,16 +8,18 @@
     <h1>Edit Expert</h1>
 
     <ul>
-       <div class="card mb-2">
-            <form  action="" method="POST" enctype="multipart/form-data">
+       <div class="card" style="width: 80%">
+           <div class="card-body">
+                <form  action="" method="POST" enctype="multipart/form-data">
 
 
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" class="btn btn-primary">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="btn btn-primary">
 
-            </form>
-        </div>
+                </form>
+            </div>
+           </div>
     </ul>
 
 {% endblock %}

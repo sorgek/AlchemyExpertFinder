@@ -72,7 +72,6 @@ def edit(request, pk):
         }
         return render(request, 'editexpert.html', context)
 
-
 class AddExpert(CreateView):
     model = Expert
     fields = ['firstName', 'lastName', 'organization', 'techSkills',
