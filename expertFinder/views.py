@@ -74,7 +74,7 @@ def edit(request, pk):
 
 class AddExpert(CreateView):
     model = Expert
-    fields = ['firstName', 'lastName', 'organization', 'techSkills',
+    fields = ['firstName', 'lastName', 'avatar', 'organization', 'techSkills',
               'courseWork', 'gitRepo', 'linkedIn', 'twitter', 'email']
     template_name = 'expertFinder/expert_form.html'
 

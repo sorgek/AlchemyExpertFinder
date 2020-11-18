@@ -7,6 +7,7 @@ from django.views.generic import ListView
 class Expert(models.Model):
     firstName = models.CharField(max_length=55)
     lastName = models.CharField(max_length=55)
+    avatar = models.ImageField(upload_to='images/')
     organization = models.CharField(max_length=100)
     techSkills = models.TextField()
     courseWork = models.TextField()
