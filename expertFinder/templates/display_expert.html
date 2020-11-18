@@ -11,12 +11,12 @@
     <ul>
        <div class="card" style="width: 80%;">
         <div class="card-body">
-       <img src="{{ expert.avatar.url }}" width=100 height=100 alt="Expert profile picture">
+            <img src="{{ expert.avatar.url }}" width=100 height=100 alt="Expert profile picture">
            <h5 class="card-title">Name</h5>
            <h6 class="card-subtitle mb-2 text-muted">{{ expert.firstName}} {{ expert.lastName }}</h6>
             <h5 class="card-title">Organization</h5>
            <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
-            <h5 class="card-title"">Tech Skills</p>
+            <h5 class="card-title">Tech Skills</h5>
            <h6 class="card-subtitle mb-2 text-muted">{{ expert.techSkills }}</h6>
             <h5 class="card-title">Course Work</h5>
            <h6 class="card-subtitle mb-2 text-muted">{{ expert.courseWork }}</h6>
@@ -34,6 +34,9 @@
             <br>
             <a href="{% url 'expertFinder:edit' expert.id %}">Edit</a>
         </div>
+        <br>
+         <a href="{% url 'expertFinder:edit' expert.id %}">Edit</a>
+    </div>
     </div>
     </ul>
 
