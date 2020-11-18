@@ -1,4 +1,4 @@
-{% extends "navbar.html" %}
+{% extends "layout.html" %}
 {% load static %}
 {% block title %}
 {{expert.lastName}}
@@ -9,32 +9,32 @@
     <h1>View Expert</h1>
 
     <ul>
-       <div class="card mb-2">
-           <dl>
-               <img src="{{ expert.avatar.url }}" width=100 height=100 alt="Expert profile picture">
-               <p class="card-text-name">{{ expert.firstName }}</p>
-               <p class="card-text-name">{{ expert.lastName }}</p>
-               <dt>Work</dt>
-               <dl class="card-text">{{ expert.organization }}</dl>
-               <dt>Skills</dt>
-               <dl class="card-text">{{ expert.techSkills }}</dl>
-               <dt>Coursework</dt>
-               <dl class="card-text">{{ expert.courseWork }}</dl>
-               <dt>Git</dt>
-               <dl class="card-text">{{ expert.gitRepo }}</dl>
-               <dt>LinkedIn</dt>
-               <dl class="card-text">{{ expert.linkedIn }}</dl>
-               <dt>Twitter</dt>
-               <dl class="card-text">{{ expert.twitter }}</dl>
-               <dt>eMail</dt>
-               <dl class="card-text">{{ expert.email }}</dl>
-           </dl>
-           <br>
-           <form action="{% url 'expertFinder:edit' expert.id %}" method="POST">
-               {% csrf_token %}
-               <input type="submit" value="Edit" class="btn btn-primary">
-           </form>
-       </div>
+       <div class="card" style="width: 80%;">
+        <div class="card-body">
+       <img src="{{ expert.avatar.url }}" width=100 height=100 alt="Expert profile picture">
+           <h5 class="card-title">Name</h5>
+           <h6 class="card-subtitle mb-2 text-muted">{{ expert.firstName}} {{ expert.lastName }}</h6>
+            <h5 class="card-title">Organization</h5>
+           <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
+            <h5 class="card-title"">Tech Skills</p>
+           <h6 class="card-subtitle mb-2 text-muted">{{ expert.techSkills }}</h6>
+            <h5 class="card-title">Course Work</h5>
+           <h6 class="card-subtitle mb-2 text-muted">{{ expert.courseWork }}</h6>
+                <div class="card" style="width: 80%">
+                    <h5 class="card-title">Work and Contact</h5>
+                    <p class="card-text">
+                        <ul>
+                        <li class="card-text"><a href= {{ expert.gitRepo }} target="_blank">{{ expert.gitRepo }}</a></li>
+                        <li class="card-text"><a href= {{ expert.linkedIn }} target="_blank">{{ expert.linkedIn }}</a></li>
+                        <li class="card-text"><a href= {{ expert.twitter }} target="_blank">{{ expert.twitter }}</a></li>
+                        <li class="card-text"><a href= "mailto:"{{ expert.email }}>{{ expert.email }}</a></li>
+                        </ul>
+                    </p>
+                </div>
+            <br>
+            <a href="{% url 'expertFinder:edit' expert.id %}">Edit</a>
+        </div>
+    </div>
     </ul>
 
 {% endblock %}
