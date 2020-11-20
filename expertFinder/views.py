@@ -38,6 +38,18 @@ def search_results(request):
     # iterate through results, putting first+lastName into listbox and record ID
 
     form = None
+
+    query_results = getQueryResults(search_for)
+
+    # TODO handle no results, probably in search_results.html body
+    results = {
+        'query': query_results
+    }
+    print(results)
+    return render(request, "search_results.html", results)
+
+
+def getQueryResults(search_for):
     if search_for['search_by'] == 'name':
         query_results = Expert.objects.all().filter(lastName__contains=search_for['search_term'])
     if search_for['search_by'] == 'skill':
@@ -47,12 +59,8 @@ def search_results(request):
     if search_for['search_by'] == 'organization':
         query_results = Expert.objects.all().filter(organization__contains=search_for['search_term'])
 
-    # TODO handle no results, probably in search_results.html body
-    results = {
-        'query': query_results
-    }
-    print(results)
-    return render(request, "search_results.html", results)
+    return query_results
+
 
 def edit(request, pk):
     try:
@@ -90,10 +98,3 @@ class EditExport(UpdateView):
     template_name = 'expertFinder/edit_expert.html'
     success_url = reverse_lazy('expertFinder:search')
 
-class EditExportTest(UpdateView):
-    print("Test request is" + UpdateView.request )
-    model = Expert
-    fields = ['firstName', 'lastName', 'organization', 'techSkills',
-              'courseWork', 'gitRepo', 'linkedIn', 'twitter', 'email']
-    template_name = 'expertFinder/edit_expert.html'
-    success_url = reverse_lazy('expertFinder:search')
