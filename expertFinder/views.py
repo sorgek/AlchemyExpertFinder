@@ -72,6 +72,8 @@ def edit(request, pk):
         }
         return render(request, 'editexpert.html', context)
 
+
+
 class AddExpert(CreateView):
     model = Expert
     fields = ['firstName', 'lastName', 'avatar', 'organization', 'techSkills',
@@ -82,6 +84,14 @@ class AddExpert(CreateView):
     success_url = reverse_lazy('expertFinder:search')
 
 class EditExport(UpdateView):
+    model = Expert
+    fields = ['firstName', 'lastName', 'organization', 'techSkills',
+              'courseWork', 'gitRepo', 'linkedIn', 'twitter', 'email']
+    template_name = 'expertFinder/edit_expert.html'
+    success_url = reverse_lazy('expertFinder:search')
+
+class EditExportTest(UpdateView):
+    print("Test request is" + UpdateView.request )
     model = Expert
     fields = ['firstName', 'lastName', 'organization', 'techSkills',
               'courseWork', 'gitRepo', 'linkedIn', 'twitter', 'email']
