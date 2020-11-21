@@ -77,8 +77,6 @@ class AddExpert(CreateView):
     fields = ['firstName', 'lastName', 'avatar', 'organization', 'techSkills',
               'courseWork', 'gitRepo', 'linkedIn', 'twitter', 'email']
     template_name = 'expertFinder/expert_form.html'
-
-
     success_url = reverse_lazy('expertFinder:search')
 
 class EditExport(UpdateView):

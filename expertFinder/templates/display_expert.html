@@ -25,7 +25,6 @@
                     <p class="card-text">
                         <ul>
                         <li class="card-text"><a href= "mailto:"{{ expert.email }}>{{ expert.email }}</a></li>
-
                         <li class="card-text"><a href= {{ expert.gitRepo }} target="_blank"><img href=""> </a></li>
                         <li class="card-text"><a href= {{ expert.linkedIn }} target="_blank">{{ expert.linkedIn }}</a></li>
                         <li class="card-text"><a href= {{ expert.twitter }} target="_blank">{{ expert.twitter }}</a></li>
@@ -33,7 +32,7 @@
                     </p>
                 </div>
             <br>
-            <a href="{% url 'expertFinder:edit' expert.id %}">Edit</a>
+            <a href="{% url 'expertFinder:edit' expert.id %}" class="btn btn-primary">Edit</a>
         </div>
     </div>
 </ul>
