@@ -19,12 +19,22 @@ Search Results
                    <a href={% url 'expertFinder:display_expert' expert.id %}>
                        <h4><u>{{ expert.firstName}} {{ expert.lastName }}</u></h4>
                    </a>
-                    <h5 class="card-title">Organization</h5>
-                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
-                    <h5 class="card-title">Tech Skills</h5>
-                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.techSkills }}</h6>
-                    <h5 class="card-title">Course Work</h5>
-                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.courseWork }}</h6>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h5 class="card-title">Organization</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
+                            </div>
+                            <div class="col-sm-4">
+                                <h5 class="card-title">Tech Skills</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ expert.techSkills }}</h6>
+                            </div>
+                            <div class="col-sm-4">
+                                <h5 class="card-title">Course Work</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ expert.courseWork }}</h6>
+                            </div>
+                        </div>
+                    </div>
                         <div class="card" style="width: 80%">
                             <h5 class="card-title">Work and Contact</h5>
                             <p class="card-text">
