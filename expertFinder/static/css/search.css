@@ -16,3 +16,7 @@
 #searchButton{
   background-color: lightgrey;
 }
+
+#id_search_term{
+    color = red
+}

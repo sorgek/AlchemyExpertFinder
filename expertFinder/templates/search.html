@@ -13,6 +13,7 @@ Find Expert
     <div class="center">
         <form action="{% url 'expertFinder:search_results' %}" method="POST" class="post-form">
             {% csrf_token %}
+
             <div>{{ form.as_p }}</div>
             <button type="submit" class="save btn btn-default" id="searchButton">Search</button>
         </form>
