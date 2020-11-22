@@ -5,13 +5,13 @@ from django.views.generic import ListView
 
 # the great expert finder model!
 class Expert(models.Model):
-    firstName = models.CharField(max_length=55)
-    lastName = models.CharField(max_length=55)
+    firstName = models.CharField("First Name", max_length=55)
+    lastName = models.CharField("Last Name", max_length=55)
     avatar = models.ImageField(upload_to='images/')
     organization = models.CharField(max_length=100)
-    techSkills = models.TextField()
-    courseWork = models.TextField()
-    gitRepo = models.URLField()
+    techSkills = models.TextField("Tech Skills")
+    courseWork = models.TextField("OSU Course Work")
+    gitRepo = models.URLField("Git Repo")
     linkedIn = models.URLField()
     twitter = models.URLField()
     email = models.EmailField()
