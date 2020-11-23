@@ -17,6 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('firstName', models.CharField(max_length=55)),
                 ('lastName', models.CharField(max_length=55)),
+                ('avatar', models.ImageField(upload_to='images/')),
                 ('organization', models.CharField(max_length=100)),
                 ('techSkills', models.TextField()),
                 ('courseWork', models.TextField()),

@@ -12,7 +12,8 @@ DROP_DOWN_CHOICES = [
 
 class search_drop_down(forms.Form):
     search_by = forms.CharField(label='Search By', widget=forms.Select(choices=DROP_DOWN_CHOICES))
-    search_term = forms.CharField(max_length=100)
+    search_term = forms.CharField(max_length=100, widget= forms.TextInput (attrs={'placeholder':'Enter text here'}))
+
 
 class EditExpert(forms.ModelForm):
     class Meta:

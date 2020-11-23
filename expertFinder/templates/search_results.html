@@ -4,43 +4,59 @@
 Search Results
 {% endblock %}
 
+
+{% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/searchResults.css' %}"/>
+{% endblock %}
+
 {% block body %}
-    <h1>Find Expert</h1>
-
-
-
+    <h1>Search Results</h1>
     <ul>
         {% for expert in query %}
-        <form  action="{% url 'expertFinder:display_expert' expert.id %}" method="POST" class="post-form">
             {% csrf_token %}
-
             <div class="card" style="width: 80%;">
                 <div class="card-body">
-                   <h5 class="card-title">Name</h5>
-                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.firstName}} {{ expert.lastName }}</h6>
-                    <h5 class="card-title">Organization</h5>
-                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
-                    <h5 class="card-title"">Tech Skills</p>
-                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.techSkills }}</h6>
-                    <h5 class="card-title">Course Work</h5>
-                   <h6 class="card-subtitle mb-2 text-muted">{{ expert.courseWork }}</h6>
+                   <a href={% url 'expertFinder:display_expert' expert.id %}>
+                       <h4><u>{{ expert.firstName}} {{ expert.lastName }}</u></h4>
+                   </a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h5 class="card-title">Organization</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
+                            </div>
+                            <div class="col-sm-4">
+                                <h5 class="card-title">Tech Skills</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ expert.techSkills }}</h6>
+                            </div>
+                            <div class="col-sm-4">
+                                <h5 class="card-title">Course Work</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ expert.courseWork }}</h6>
+                            </div>
+                        </div>
+                    </div>
                         <div class="card" style="width: 80%">
                             <h5 class="card-title">Work and Contact</h5>
                             <p class="card-text">
-                                <ul>
-                                <li class="card-text"><a href= {{ expert.gitRepo }} target="_blank">{{ expert.gitRepo }}</a></li>
-                                <li class="card-text"><a href= {{ expert.linkedIn }} target="_blank">{{ expert.linkedIn }}</a></li>
-                                <li class="card-text"><a href= {{ expert.twitter }} target="_blank">{{ expert.twitter }}</a></li>
-                                <li class="card-text"><a href= "mailto:"{{ expert.email }}>{{ expert.email }}</a></li>
-                                </ul>
+                                <span class="card-text"><a href= {{ expert.gitRepo }} >
+                                    <img class="socialMedia" src="{% static 'images/github.png' %}" alt="Github icon">
+                                </a></span>
+                                <span class="card-text"><a href= {{ expert.linkedIn }} >
+                                    <img class="socialMedia" src="{% static 'images/in.png' %}" alt="LinkedIn icon">
+                                </a></span>
+                                <span class="card-text"><a href= {{ expert.twitter }}>
+                                    <img class="socialMedia" src="{% static 'images/twitter.png' %}" alt="Twitter icon">
+                                </a></span>
+                                <span class="card-text"><a href= "mailto:"{{ expert.email }}>
+                                    <img class="socialMedia" src="{% static 'images/email.png' %}" alt="Email icon">
+                                </a></span>
                             </p>
                         </div>
                     <br>
-                    <button  type="submit" class="save btn btn-default">Go to Expert</button>
                 </div>
             </div>
             </form>
-
+        <br>
 
         {% endfor %}
     </ul>
