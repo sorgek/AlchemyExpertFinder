@@ -5,15 +5,6 @@ from .forms import search_drop_down, EditExpert
 from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 
-def edit_profile(request):
-    if request.method == "POST":
-        form = edit_profile(request.POST)
-        if form.is_valid():
-            form.save()
-        else:
-            form = edit_profile(request)
-            return render(request, 'editexpert.html', {'form': form})
-
 def index(request):
     search = search_drop_down()
     return render(request, "search.html", {
@@ -76,9 +67,3 @@ class AddExpert(CreateView):
     template_name = 'expertFinder/expert_form.html'
     # success_url = reverse_lazy('expertFinder:search')
 
-class EditExport(UpdateView):
-    model = Expert
-    fields = ['firstName', 'lastName', 'organization', 'techSkills',
-              'courseWork', 'gitRepo', 'linkedIn', 'twitter', 'email']
-    template_name = 'expertFinder/edit_expert.html'
-    success_url = reverse_lazy('expertFinder:search')
