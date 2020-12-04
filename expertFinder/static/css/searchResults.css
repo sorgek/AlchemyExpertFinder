@@ -4,3 +4,13 @@
     width: 30px;
 
 }
+
+#noResults{
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+
+#backButton{
+    background-color: lightgrey;
+}

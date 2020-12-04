@@ -10,21 +10,27 @@ Search Results
 {% endblock %}
 
 {% block body %}
+
+
+    {% if query.exists %}
+
     <h1>Search Results</h1>
+
     <ul>
         {% for expert in query %}
             {% csrf_token %}
             <div class="card" style="width: 80%;">
                 <div class="card-body">
+
+
                    <a href={% url 'expertFinder:display_expert' expert.id %}>
                        <h4><u>{{ expert.firstName}} {{ expert.lastName }}</u></h4>
-                   </a>
+
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-4">
-                                <h5 class="card-title">Organization</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
-                            </div>
+                            <h5 class="card-title">Organization</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ expert.organization }}</h6>
+
                             <div class="col-sm-4">
                                 <h5 class="card-title">Tech Skills</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{ expert.techSkills }}</h6>
@@ -60,6 +66,13 @@ Search Results
 
         {% endfor %}
     </ul>
+
+        {% else %}
+            <div id="noResults"> No results! Try another query.
+                <p> <a href="{% url 'expertFinder:search' %}" type="text/css"> <button id="backButton" type="button" class="btn btn-link">Back</button> </a> </p>
+            </div>
+        {% endif %}
+
 
 {% endblock %}
 
